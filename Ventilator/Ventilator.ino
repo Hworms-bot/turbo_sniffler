@@ -11,6 +11,9 @@
  * Blackwood Lane Winery & University of the Fraser Valley.
  * 
  */
+
+// Optional Timer Library at https://playground.arduino.cc/Code/TimedAction/
+// could also use arduino-timer library from the library manager.
  
 #include <SPI.h>
 #include <Wire.h>
@@ -209,8 +212,9 @@ void loop() {
 //////////FUNCTION BLOCKS//////////
 ///////////////////////////////////
 
-
-
+/*
+ * This function presents the covid ventilator welcome screen on lcd.
+ */
 void lcdWelcomeScreen(void) {
   display.clearDisplay();
 
@@ -224,6 +228,9 @@ void lcdWelcomeScreen(void) {
   display.display();
 }
 
+/*
+ * This function displays a string onto the lcd screen
+ */
 void lcdWriteString(String message, int curs_x, int curs_y, bool clearDisplay) {
   if(clearDisplay){
     display.clearDisplay();
@@ -238,4 +245,195 @@ void lcdWriteString(String message, int curs_x, int curs_y, bool clearDisplay) {
 
   display.display();
   //delay(2000);
+}
+
+/*
+ * go through all the steps to begin the exhaling process, whether the patient is breathing manually or not, the 
+ * exhale is the same. Will need to check whether Assist switch is on or not.
+ */
+void breatheExpire() {
+  
+}
+
+/*
+ * go through all the steps to begin the breathing process, whether triggered by patient or timer program
+ */
+void breatheInspire() {
+  
+}
+
+/*
+ * This function closes all the Medical Hospital air solenoid vales
+ */
+void closeAllMedAir() {
+  
+}
+
+/*
+ * This funciton closes all the Oxygen solenoid valves
+ */
+void closeAllOxygenValves() {
+  
+}
+
+/*
+ * This closes the assist solenoid. This is generally closed right after the expire solenoid is closed
+ */
+void closeAssistSolenoid() {
+  
+}
+
+/*
+ * This function closes the expire solenoid to finish an exhalation process
+ */
+void closeExpireSolenoid() {
+  
+}
+
+/*
+ * This functon closes the inspire solenoid to finish an inhalataion process
+ */
+void closeInspireSolenoid() {
+  
+}
+
+void displayBatteryLowAlarm() {
+  
+}
+
+void displayExpirePressureAlarm() {
+  
+}
+
+void displayInspirePressureAlarm() {
+  
+}
+
+void displayPowerFailureAlarm() {
+  
+}
+
+void displayOxygenConcentrationAlarm() {
+  
+}
+
+void displayPeakPressureAlarm() {
+  
+}
+
+void displayDifferentialPressureAlarm() {
+  
+}
+
+/*
+ * if the the patient triggered mode switch is on, return true and initiate the patient triggered breathing progress
+ * else return false
+ */
+bool ifPatientTriggeredMode(void) {
+  return false;
+}
+
+/*
+ * This function opens the assist solenoid to help the patient exhale. This should only be 
+ * used in conjunction with the expire solenoid
+ */
+void openAssistSolenoid() {
+  
+}
+
+/*
+ * This function opens the expire solenoid to start the exhale
+ */
+void openExpireSolenoid() {
+  
+}
+
+/*
+ * This function opens the inspire solenoid to start the inhaling
+ */
+void openInspireSolenoid(){
+  
+}
+
+/*
+ * This function allows you to open either 1, 2, 3, 4, or even 0 medical air valves
+ */
+void openMedAirValves(bool valve1=false, bool valve2=false, bool valve3=false, bool valve4=false) {
+  
+}
+
+/*
+ * This function allows you to open either 0, 1, 2, 3, 4 oxygen air valves
+ */
+void openOxygenValves(bool valve1=false, bool valve2=false, bool valve3=false, bool valve4=false) {
+  
+}
+
+/*
+ * read the switch Assist SW to if we want assist on the exhale, return true or false appropriately
+ */
+bool readBreatheAssistSwitch() {
+  return false;
+}
+
+/*
+ * Read the expire pressure from the pressure sensor
+ */
+uint8_t readExpirePressure() {
+  return 0;
+}
+
+/* 
+ * The expire time is set by the potentiometer on the board, need to read that value, and convert it using analog 
+ * scaling and return a value in seconds, preferably want more precision than whole seconds... not sure yet what is the best
+ */
+uint8_t readExpireTime() {
+  return 5;
+}
+
+/*
+ * Read the differential pressure from the pressure sensor
+ */
+uint8_t readDifferentialPressure() {
+  return 0;
+}
+
+/*
+ * Read the inspire pressure from the pressure sensor
+ */
+uint8_t readInspirePressure() {
+  return 0;
+}
+
+/*
+ * the inspire time is set by the potentiometer on the board, need to read that value, and convert it using analog 
+ * scaling and return a value in seconds, preferably want more precision than whole seconds... not sure yet what is the best 
+ */
+uint8_t readInspireTime() {
+  return 3;
+}
+
+/*
+ * Read the mask switch sensor that outputs a digital signal and return the appropriate result
+ */
+bool readMaskSwitch(void) {
+  return false;
+}
+
+/*
+ * Use this method to scale the analog value coming in from the potentiometers to get a reading between 0 and 10seconds. We
+ * want a continous(more or less) resolution, so we may need decimal places, or multiply by 100....?
+ */
+uint8_t scaleAnalog(int value) {
+  return 3;
+}
+
+/*
+ * This method will select how many solenoids need to be open when recharging the inspire cylinder
+ * Based on the position of the rotary switch we want to choose a certain amount of solenoid valves to as 
+ * to get the right mixture into the cylinder into eventually into the person
+ * 
+ * The different mixtures are 100, 75, 60, 50, 40, 33, 25, 0
+ */
+void selectAirMix(){
 }
